@@ -181,6 +181,30 @@
       "scheduled_at": "2026-10-01T23:55:00",
       "content": "今天最后一条。\n\n我最近挺喜欢一种感觉：\n\n账号在涨。\n项目在做。\n身体在练。\n脑子里还有一堆没实现的东西。\n\n忙是忙。\n\n但至少不是在等生活发生。\n\n我在主动惹事。",
       "enabled": true
+    },
+    {
+      "id": "post-20261002-b1-001",
+      "scheduled_at": "2026-10-02T00:40:00",
+      "content": "程序员最理想的夜生活：\n\n我睡觉。\n\n程序继续干活。\n\n早上起来只负责看它有没有把家拆了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-b1-002",
+      "scheduled_at": "2026-10-02T02:20:00",
+      "content": "Build while awake.\n\nAutomate while asleep.\n\nWake up with leverage.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-b1-003",
+      "scheduled_at": "2026-10-02T04:20:00",
+      "content": "AI doesn't sleep.\n\nThat's exactly why I don't want to use it like a smarter Google search.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-b1-004",
+      "scheduled_at": "2026-10-02T06:50:00",
+      "content": "最爽的杠杆不是让自己一天干 16 小时。\n\n是你睡了 8 小时，\n\n有些东西还在继续往前走。\n\n人可以休息。\n系统别停。",
+      "enabled": true
     }
   ]
 }
