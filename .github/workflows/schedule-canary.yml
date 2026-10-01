@@ -1,0 +1,20 @@
+name: Schedule Canary
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print scheduler diagnostics
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "repository=${{ github.repository }}"
+          echo "default_branch=${{ github.event.repository.default_branch }}"
+          echo "schedule=${{ github.event.schedule }}"
+          date -u
