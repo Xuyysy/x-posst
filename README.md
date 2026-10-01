@@ -1,6 +1,6 @@
 # X Auto Poster V1
 
-个人定时文字发帖工具。你只需维护仓库中的 `data/posts.json`；GitHub Actions 每小时检查四次，Python 找到到期帖子并调用 Buffer GraphQL API 的 `createPost`，请求 Buffer 立即处理到你已连接的 X 账号。Buffer 接受请求后，本地状态记为 `submitted`。这表示 Buffer 已接收任务，不代表 X 已最终发布；最终投递状态请在 Buffer Dashboard 查看。
+个人定时文字发帖工具。你只需维护仓库中的 `data/posts.json`；外部定时器每 15 分钟调用 GitHub 的 `workflow_dispatch` API，启动 Actions 工作流。Python 找到到期帖子并调用 Buffer GraphQL API 的 `createPost`，请求 Buffer 立即处理到你已连接的 X 账号。Buffer 接受请求后，本地状态记为 `submitted`。这表示 Buffer 已接收任务，不代表 X 已最终发布；最终投递状态请在 Buffer Dashboard 查看。
 
 ## 第一次配置
 
@@ -58,9 +58,44 @@ Fork 本仓库，或在 GitHub 创建仓库并上传项目。不要把 API Key �
 
 进入 GitHub **Actions → X Auto Poster → Run workflow**。手动和定时运行使用同一个 Python 入口。查看该次运行日志：如果有到期帖子，应看到 `Buffer accepted post …`。然后在 Buffer Dashboard 检查该 Post；在 Buffer 接收请求后，工作流会自动提交更新后的 `data/state.json`。如果没有到期帖子，日志显示 `No posts due.`，不会发起 Buffer API 请求。
 
+## External Scheduler Setup
+
+使用 [cron-job.org](https://cron-job.org/) 每 15 分钟调用一次 GitHub workflow dispatch API。GitHub 原生 `schedule` 暂时保留为备用触发器；自动运行以外部定时器为准。
+
+1. 在 GitHub **Settings → Developer settings → Personal access tokens → Fine-grained tokens** 创建 Fine-grained PAT。Repository access 选择 **Only select repositories**，仅选 `Xuyysy/x-posst`；Repository permissions 只将 **Actions** 设为 **Read and write**。按需要设置到期日。不要创建 classic PAT，也不要把 token 写入仓库文件或 GitHub Secrets。
+2. 在 cron-job.org 创建 HTTP job，将执行频率设为**每 15 分钟**，请求方法设为 `POST`，URL 填入：
+
+   ```text
+   https://api.github.com/repos/Xuyysy/x-posst/actions/workflows/auto-post.yml/dispatches
+   ```
+
+3. 填写 HTTP headers。仅在 cron-job.org 的 `Authorization` header 中填入 PAT；不要把它放进 URL、Body 或仓库：
+
+   ```text
+   Accept: application/vnd.github+json
+   Authorization: Bearer <FINE_GRAINED_PAT>
+   X-GitHub-Api-Version: 2026-03-10
+   Content-Type: application/json
+   ```
+
+4. Body 选择原始 JSON，填入：
+
+   ```json
+   {
+     "ref": "main",
+     "inputs": {
+       "trigger_source": "external-cron"
+     }
+   }
+   ```
+
+5. 保存并启用 job。可以在 cron-job.org 对这个 job 执行一次 **Test run / Execute now** 测试外部触发；它会运行真实发布流程，请先确认 `data/posts.json` 中的内容适合发布。GitHub API 成功接受请求时返回 HTTP `200`。随后打开 GitHub **Actions → X Auto Poster**，找到这次 `workflow_dispatch` 运行，在 `publish → Show trigger diagnostics` 日志中确认 `event=workflow_dispatch` 与 `trigger_source=external-cron`。如果没有到期帖子，后续发布步骤会输出 `No posts due.` 并正常结束。手动在 GitHub 页面运行时，`trigger_source` 默认为 `manual`。
+
+`BUFFER_API_KEY` 和 `BUFFER_CHANNEL_ID` 继续只保存在 GitHub Actions Secrets 中。外部 PAT 只用于启动工作流，不参与 Python 到 Buffer 的请求。
+
 ## 日常使用
 
-以后只需打开 `data/posts.json`，添加新帖子并 Commit。GitHub Actions 按 UTC cron 大约每小时的第 7、22、37、52 分钟运行一次。GitHub cron 的触发时间可能延迟，程序会按帖子计划时间检查。一次发现多条到期帖子时按时间先后依次提交，两次请求间隔 2 秒。
+以后只需打开 `data/posts.json`，添加新帖子并 Commit。cron-job.org 每 15 分钟启动一次 GitHub Actions；实际请求可能稍有延迟，程序会按帖子计划时间检查。一次发现多条到期帖子时按时间先后依次提交，两次请求间隔 2 秒。
 
 请只编辑 `data/posts.json`，平时不要手动修改 `data/state.json`。状态由程序维护，Actions 在状态变化后提交它。
 
@@ -102,7 +137,7 @@ pytest
 
 ## GitHub Actions 和日志
 
-定时工作流支持 `workflow_dispatch`，使用 `ubuntu-latest`、Python 3.12 和 `contents: write`。Concurrency 确保同一时间只运行一个发布任务。状态有变化时，工作流提交 `chore: update auto poster state`，然后 fetch/rebase 最新分支再 push；不使用 force push。没有状态变化时不提交。
+发布工作流同时支持 `workflow_dispatch` 和原生 `schedule`，两种触发方式执行完全相同的 `publish` job，使用 `ubuntu-latest`、Python 3.12 和 `contents: write`。Concurrency 确保同一时间只运行一个发布任务。状态有变化时，工作流提交 `chore: update auto poster state`，然后 fetch/rebase 最新分支再 push；不使用 force push。没有状态变化时不提交。
 
 如果运行失败，打开 **Actions → X Auto Poster → 对应运行 → publish job** 查看 stdout 日志。CI 工作流在 push 和 pull request 时运行 pytest，不需要 Secrets，也不会调用真实 Buffer API。
 
