@@ -7,6 +7,12 @@
       "scheduled_at": "2099-01-01T10:07:00",
       "content": "Hello from X Auto Poster!",
       "enabled": false
+    },
+    {
+      "id": "zane-brand-positioning-20261001-001",
+      "scheduled_at": "2026-10-01T11:38:44",
+      "content": "朋友圈最容易制造一种错觉：\n\n好像很多人认识你，\n你就有影响力了。\n\n实际上走出那几百个熟人，\n\n没人知道你是谁。\n\n所以我现在更想做一件事：\n\n让陌生人记住 Zane。",
+      "enabled": true
     }
   ]
 }
