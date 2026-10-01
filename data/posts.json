@@ -1,37 +1,186 @@
-
 {
   "timezone": "Asia/Shanghai",
   "max_lateness_minutes": 90,
   "posts": [
-    {"id":"post-20261001-001","scheduled_at":"2026-10-01T12:15:00","content":"朋友圈发得再勤，也很难改变命运。\n\n你需要的是让不认识你的人开始认识你。\n\n熟人点赞叫社交。\n\n陌生人关注才叫增长。","enabled":true},
-    {"id":"post-20261001-002","scheduled_at":"2026-10-01T12:35:00","content":"男生真的别把健身想复杂了。\n\n肩宽一点。\n腰细一点。\n脸瘦一点。\n\n已经能干掉大部分所谓的“穿搭技巧”。\n\n肉体才是最贵的衣服。","enabled":true},
-    {"id":"post-20261001-003","scheduled_at":"2026-10-01T12:55:00","content":"2026 年还在纠结要不要用 AI 写代码，\n\n跟当年纠结要不要用搜索引擎差不多。\n\n你当然可以不用。\n\n代价是别人开始按倍速活。","enabled":true},
-    {"id":"post-20261001-004","scheduled_at":"2026-10-01T13:15:00","content":"我越来越不相信“稳定”。\n\n工资能停。\n公司能裁。\n行业能凉。\n\n真正的稳定是：\n\n换个地方，我照样能搞到钱。","enabled":true},
-    {"id":"post-20261001-005","scheduled_at":"2026-10-01T13:35:00","content":"程序员最大的身份危机：\n\n以前：\n“这功能我得写两天。”\n\n现在：\n“等一下，我让 Agent 跑跑。”\n\n然后你坐在那里喝咖啡。","enabled":true},
-    {"id":"post-20261001-006","scheduled_at":"2026-10-01T13:55:00","content":"20 多岁最蠢的事情之一：\n\n活得像已经 45 岁。\n\n怕辞职。\n怕失败。\n怕丢脸。\n怕别人评价。\n\n哥们，\n\n你现在连东西都没多少，到底在怕失去什么？","enabled":true},
-    {"id":"post-20261001-007","scheduled_at":"2026-10-01T14:15:00","content":"薄肌最爽的地方不是健身房有人看你。\n\n是你穿最普通的：\n\n白 T。\n牛仔裤。\n运动鞋。\n\n照样像精心搭过。\n\n身材好的人，穿搭难度是简单模式。","enabled":true},
-    {"id":"post-20261001-008","scheduled_at":"2026-10-01T14:35:00","content":"0 粉丝的时候就应该疯狂发。\n\n这是你这辈子做自媒体容错率最高的阶段。\n\n发垃圾没人看。\n说错话没人记得。\n换方向没人发现。\n\n结果很多人偏偏这个时候最要脸🤣","enabled":true},
-    {"id":"post-20261001-009","scheduled_at":"2026-10-01T14:55:00","content":"以前拼学历。\n\n后来拼互联网信息差。\n\n现在开始拼：\n\n谁能把 AI 调教成自己的第二大脑。\n\n下一轮差距已经开始了。\n\n只是很多人还没感觉到。","enabled":true},
-    {"id":"post-20261001-010","scheduled_at":"2026-10-01T15:15:00","content":"打工最可怕的不是工资低。\n\n是每个月准时到账之后，\n\n你逐渐失去了寻找第二条收入曲线的冲动。\n\n舒服才是最贵的税。","enabled":true},
-    {"id":"post-20261001-011","scheduled_at":"2026-10-01T15:35:00","content":"AI 不会让程序员消失。\n\n但“只会写代码”的程序员，\n\n这个定位已经越来越奇怪了。\n\n产品、审美、商业、表达、AI orchestration。\n\n代码正在从职业变成杠杆。","enabled":true},
-    {"id":"post-20261001-012","scheduled_at":"2026-10-01T15:55:00","content":"我现在判断一件事值不值得做，非常简单：\n\n做一年之后，\n\n它能不能让我变得：\n\n更帅\n更强\n更有钱\n更自由\n\n四个一个都不占？\n\n下一位。","enabled":true},
-    {"id":"post-20261001-013","scheduled_at":"2026-10-01T16:15:00","content":"健身圈经常把简单的东西搞得像科研。\n\n普通人先做到：\n\n别胖。\n练肩。\n练背。\n睡够。\n坚持一年。\n\n你已经赢麻了。","enabled":true},
-    {"id":"post-20261001-014","scheduled_at":"2026-10-01T16:35:00","content":"以前觉得：\n\n等我牛逼了，我再做自媒体。\n\n后来发现完全反了。\n\n你得先公开做一个菜鸟，才有机会公开变牛逼。","enabled":true},
-    {"id":"post-20261001-015","scheduled_at":"2026-10-01T16:55:00","content":"未来最搞笑的一类人：\n\nAI 什么都会，\n\n他每天拿 AI 干的事情是：\n\n“帮我润色一下这句话。”\n\n相当于买了台挖掘机，\n\n用来挖鼻屎。","enabled":true},
-    {"id":"post-20261001-016","scheduled_at":"2026-10-01T17:15:00","content":"工资是别人给你的估值。\n\n收入是市场给你的估值。\n\n资产是你睡着之后，\n\n还愿意继续替你工作的东西。\n\n这三个东西完全不是一个游戏。","enabled":true},
-    {"id":"post-20261001-017","scheduled_at":"2026-10-01T17:35:00","content":"年轻的时候应该有一点不切实际。\n\n你都还没被现实验证过，\n\n凭什么提前判自己输？\n\n先狂一点。\n\n世界会负责教育你。\n\n不用自己提前动手。","enabled":true},
-    {"id":"post-20261001-018","scheduled_at":"2026-10-01T17:55:00","content":"以前面试：\n\n“熟悉 Java、MySQL、Redis 吗？”\n\n以后面试：\n\n“你一个人配 5 个 Agent，能不能把这产品做出来？”\n\n程序员正在从码农升级成人类项目经理。","enabled":true},
-    {"id":"post-20261001-019","scheduled_at":"2026-10-01T18:15:00","content":"我的健身目标越来越俗：\n\n穿衣服帅。\n\n脱衣服更帅。\n\n吃饭不用称到 0.1 克。\n\n偶尔出去玩几天也不会身材崩盘。\n\n身体为我服务，不是我给身体打工。","enabled":true},
-    {"id":"post-20261001-020","scheduled_at":"2026-10-01T18:35:00","content":"真正的自律不是每天把自己折磨得半死。\n\n是你找到一种生活方式，\n\n可以重复 1000 天。\n\n一天燃爆没什么用。\n\n能续费才牛逼。","enabled":true},
-    {"id":"post-20261001-021","scheduled_at":"2026-10-01T18:55:00","content":"互联网给普通人最大的外挂：\n\n你不需要先被谁选中。\n\n想写就发。\n想做产品就上线。\n想拍视频就拍。\n想做账号就开。\n\n以前要门票。\n\n现在最大的门槛是你自己不敢发。","enabled":true},
-    {"id":"post-20261001-022","scheduled_at":"2026-10-01T19:15:00","content":"AI 时代最值钱的可能不是“会提问”。\n\n而是：\n\n你有没有值得 AI 帮你完成的目标。\n\n工具已经越来越变态了。\n\n很多人缺的反而是野心。","enabled":true},
-    {"id":"post-20261001-023","scheduled_at":"2026-10-01T19:35:00","content":"省钱只能让你少穷一点。\n\n真正让我兴奋的是：\n\n怎么把自己的单位时间价格打上去。\n\n10 块钱的咖啡我懒得纠结。\n\n我更想研究怎么多赚 1000。","enabled":true},
-    {"id":"post-20261001-024","scheduled_at":"2026-10-01T19:55:00","content":"健身最大的正反馈其实不是腹肌。\n\n是某一天你照镜子突然意识到：\n\n卧槽，我真的可以改变自己的肉体。\n\n然后你会开始怀疑：\n\n那人生其他东西是不是也能改？","enabled":true},
-    {"id":"post-20261001-025","scheduled_at":"2026-10-01T20:20:00","content":"别把每条帖子都当作品。\n\n把账号当实验室。\n\n一天发 20 条，\n\n19 条死了。\n\n有 1 条爆了。\n\n你就知道市场想看什么。\n\n互联网不奖励完美主义者。","enabled":true},
-    {"id":"post-20261001-026","scheduled_at":"2026-10-01T20:45:00","content":"最该焦虑的不是：\n\n“AI 写代码比我快怎么办？”\n\n而是：\n\n别人已经在让 AI：\n\n写代码\n测代码\n查 bug\n读文档\n做调研\n\n你还在跟它聊：\n\n“你好。”","enabled":true},
-    {"id":"post-20261001-027","scheduled_at":"2026-10-01T21:10:00","content":"我很喜欢一种状态：\n\n身材在线。\n脑子在线。\n账户在涨。\n有东西在做。\n对未来还有点不切实际的自信。\n\n这比所谓的松弛感爽多了。","enabled":true},
-    {"id":"post-20261001-028","scheduled_at":"2026-10-01T21:35:00","content":"个人 IP 本质上很变态。\n\n你今天随手发出去的一句话，\n\n可能半年后还在：\n\n帮你认识人，\n带来机会，\n卖掉产品。\n\n人睡了，内容还在上班。","enabled":true},
-    {"id":"post-20261001-029","scheduled_at":"2026-10-01T22:05:00","content":"我不想只当：\n\n程序员。\n健身男。\n博主。\n投资者。\n\n标签是给别人理解你的。\n\n不是拿来限制自己的。\n\n薄肌 + AI + 内容 + 钱，我全都要。","enabled":true},
-    {"id":"post-20261001-030","scheduled_at":"2026-10-01T22:45:00","content":"每天发 30 条确实有点疯。\n\n但我越来越觉得：\n\n普通人想从互联网杀出来，\n\n最大的敌人根本不是竞争对手。\n\n是：\n\n怕丢脸。\n没执行力。\n三天就腻。\n\n那就先当一个不要脸、能坚持的人。","enabled":true}
+    {
+      "id": "post-20261001-001",
+      "scheduled_at": "2026-10-01T12:10:00",
+      "content": "今天又打开朋友圈，划了两下就关了。\n\n越来越没感觉。\n\n熟人给我点 30 个赞，\n不如 X 上一个陌生人突然私信：\n\n“这个东西一起做吗？”\n\n我现在对后者上瘾。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-002",
+      "scheduled_at": "2026-10-01T12:34:00",
+      "content": "刚换了件最普通的白 T。\n\n衣服没变。\n\n肩线起来之后，\n效果真的像换了个人。\n\n男生有时候不用研究那么多穿搭。\n\n先把衣架练出来。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-003",
+      "scheduled_at": "2026-10-01T12:58:00",
+      "content": "OpenAI 现在连 AI 都准备让它常驻上班了。\n\n我看到的第一反应不是“牛逼”。\n\n是：\n\n以后一个团队里最容易摸鱼的，\n可能真的是人类老板。\n\nAgent 不睡觉。\n\n你睡醒最好有任务给它。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-004",
+      "scheduled_at": "2026-10-01T13:22:00",
+      "content": "刚看了一眼银行卡。\n\n我现在对“涨工资”三个字越来越麻木。\n\n更想知道的是：\n\n如果明天没人给我发工资，\n\n我还能不能把这个数字自己搞回来。\n\n这才刺激。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-005",
+      "scheduled_at": "2026-10-01T13:46:00",
+      "content": "I don't need AI to make me 10% more productive.\n\nI want it working while I'm at the gym.\n\nThat's the benchmark.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-006",
+      "scheduled_at": "2026-10-01T14:10:00",
+      "content": "下午 Agent 跑着，\n\n我去练背。\n\n回来它交代码，\n我交一身汗。\n\n这才是我想要的 AI。\n\n不是让我一天干 16 小时。\n\n是替我把坐椅子的时间砍掉。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-007",
+      "scheduled_at": "2026-10-01T14:34:00",
+      "content": "减脂期最恐怖的四个字：\n\n“就这一顿。”\n\n我见过太多一周七顿“就这一顿”。\n\n胖不是突然胖的。\n\n都是一顿一顿被自己批准的。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-008",
+      "scheduled_at": "2026-10-01T14:58:00",
+      "content": "小号阶段真的别装品牌经理。\n\n今天聊 AI。\n\n明天发训练。\n\n后天骂一个自己看不惯的东西。\n\n你现在最缺的不是定位。\n\n是活人味。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-009",
+      "scheduled_at": "2026-10-01T15:22:00",
+      "content": "现在模型更新快到我已经懒得看跑分了。\n\n我只做一个测试：\n\n把我今晚最烦的活扔给它。\n\n做完，留下。\n\n做不完，下一个。\n\nAI 圈也该少点饭圈味。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-010",
+      "scheduled_at": "2026-10-01T15:46:00",
+      "content": "刚才为了省 37 块钱，\n\n我差点比价半小时。\n\n做到一半把页面关了。\n\n突然觉得：\n\n一个成年人如果半小时只值 37 块，\n\n那真正该优化的不是购物车。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-011",
+      "scheduled_at": "2026-10-01T16:10:00",
+      "content": "练腿和赚钱有一个共同点：\n\n所有人都承认重要。\n\n真轮到自己狠狠干的时候，\n\n突然都有别的安排。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-012",
+      "scheduled_at": "2026-10-01T16:34:00",
+      "content": "2026 status symbols:\n\na body you built,\nincome you own,\nskills you can take anywhere.\n\nThe logo on your shirt is way down the list.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-013",
+      "scheduled_at": "2026-10-01T16:58:00",
+      "content": "一个词开始被别人拿去玩梗的时候，\n\n这个 IP 才算真的活了。\n\n所以我现在不太追求“每条都正确”。\n\n我更想要：\n\n你刷到某几个词，\n\n就想到 Zane。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-014",
+      "scheduled_at": "2026-10-01T17:22:00",
+      "content": "AI 写代码以后，\n\n我最爽的一点：\n\n终于不用把最贵的脑子\n全浪费在 if else 上。\n\n我现在更愿意想：\n\n谁会用？\n为什么掏钱？\n发出去谁会转？\n\n这才有意思。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-015",
+      "scheduled_at": "2026-10-01T17:46:00",
+      "content": "刚看完今天的屏幕使用时间。\n\n那一刻我有点想骂自己。\n\n刷别人 3 小时。\n\n输出自己 30 分钟。\n\n这账怎么算都亏。\n\n今晚把流量还回去。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-016",
+      "scheduled_at": "2026-10-01T18:10:00",
+      "content": "晚饭前：\n\n薄肌。\n\n晚饭后：\n\n厚肌体验服。\n\n人类最公平的事情之一：\n\n你腹肌再牛，\n\n一碗饭下去也得暂时下班。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-017",
+      "scheduled_at": "2026-10-01T18:34:00",
+      "content": "我想要的有钱，\n\n不是买东西不看价格。\n\n是碰到烂人、烂项目、烂环境，\n\n我能直接说：\n\n不赚你这个钱了。\n\n然后走。\n\n这比豪车爽。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-018",
+      "scheduled_at": "2026-10-01T18:58:00",
+      "content": "My favorite AI benchmark:\n\ncan it finish the task\nbefore I finish my workout?\n\nEverything else is marketing.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-019",
+      "scheduled_at": "2026-10-01T19:22:00",
+      "content": "X 上最便宜的东西就是正确观点。\n\n一抓一大把。\n\n真正贵的是：\n\n你说完一句话，\n\n别人一看就知道：\n\n“这像你说的。”\n\n我现在只想练这个。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-020",
+      "scheduled_at": "2026-10-01T19:46:00",
+      "content": "健身房最诚实的东西不是镜子。\n\n是杠铃片。\n\n照片能找角度。\n\n光能骗。\n\n滤镜能救。\n\n重量不陪你演。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-021",
+      "scheduled_at": "2026-10-01T20:10:00",
+      "content": "Agent 真开始 24 小时干活以后，\n\n我怀疑很多人的瓶颈会变得很尴尬：\n\n不是没工具。\n\n是一天过去，\n\n根本想不出该让它干什么。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-022",
+      "scheduled_at": "2026-10-01T20:34:00",
+      "content": "以前我特别爱开新项目。\n\n新 repo 一建，\n\n爽得像创业成功。\n\n现在戒了。\n\n能收第一块钱的破产品，\n\n比 GitHub 里 20 个漂亮半成品性感多了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-023",
+      "scheduled_at": "2026-10-01T20:58:00",
+      "content": "如果明天 AI 可以永久替你接管一件事，\n\n你交出去什么？\n\n我先来：\n\n查资料 + 整理 + 追进度。\n\n最好连催我都一起接管。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-024",
+      "scheduled_at": "2026-10-01T21:22:00",
+      "content": "承认了。\n\n我健身当然想健康。\n\n但我也想穿 T 恤的时候，\n\n袖口被手臂顶起来一点。\n\n人活着有点虚荣心怎么了。\n\n又没偷又没抢。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-025",
+      "scheduled_at": "2026-10-01T21:46:00",
+      "content": "Gym.\nCode.\nCashflow.\nSleep.\n\nBoring?\n\nGood.\n\nI want a boring system that makes my life look unfair in 3 years.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-026",
+      "scheduled_at": "2026-10-01T22:10:00",
+      "content": "我现在最烦“等准备好”。\n\n很多东西我根本不是准备好了才发。\n\n是先发出去，\n\n发现有人看，\n\n然后连夜逼自己配得上。\n\n压力有时候比计划好用。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-027",
+      "scheduled_at": "2026-10-01T22:34:00",
+      "content": "一天 30 条听起来像内容垃圾场。\n\n但我更怕另一种：\n\n憋一天，\n\n雕出一条自以为完美的废话，\n\n0 回复。\n\n然后第二天继续憋。\n\n先把脸皮练厚。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-028",
+      "scheduled_at": "2026-10-01T22:58:00",
+      "content": "Agent 报错以后，\n\n我现在已经懒得自己 debug 了。\n\n我会开另一个 Agent，\n\n问它第一个 Agent 为什么发疯。\n\n程序员这职业越来越像：\n\n电子幼儿园老师。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-029",
+      "scheduled_at": "2026-10-01T23:22:00",
+      "content": "我手机里最想看的四条曲线：\n\n体重别乱涨。\n\n力量往上。\n\n收入往上。\n\n粉丝往上。\n\n四个一起绿，\n\n我一天心情都很好。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261001-030",
+      "scheduled_at": "2026-10-01T23:46:00",
+      "content": "今天最后一条。\n\n我越来越喜欢把自己放在公开互联网上升级。\n\n练好了，\n有人看见。\n\n做砸了，\n也有人看见。\n\n丢脸就丢脸。\n\n我更怕三年后还是只有一句：\n\n“我本来想。”",
+      "enabled": true
+    }
   ]
 }
