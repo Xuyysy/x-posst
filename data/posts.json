@@ -1,0 +1,12 @@
+{
+  "timezone": "Asia/Shanghai",
+  "max_lateness_minutes": 90,
+  "posts": [
+    {
+      "id": "example-001",
+      "scheduled_at": "2099-01-01T10:07:00",
+      "content": "Hello from X Auto Poster!",
+      "enabled": false
+    }
+  ]
+}
