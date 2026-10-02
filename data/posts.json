@@ -1,5 +1,186 @@
 {
   "timezone": "Asia/Shanghai",
   "max_lateness_minutes": 90,
-  "posts": []
+  "posts": [
+    {
+      "id": "post-20261002-v4-001",
+      "scheduled_at": "2026-10-02T21:55:00",
+      "content": "今晚继续往上顶。\n\n活人互关，平时真发东西的优先。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-002",
+      "scheduled_at": "2026-10-02T22:11:00",
+      "content": "小号阶段最值钱的可能不是流量。\n\n是你还敢随便试，反正也没什么偶像包袱。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-003",
+      "scheduled_at": "2026-10-02T22:28:00",
+      "content": "今天带学生健身赚到钱以后突然发现：\n\n技能第一次变现，金额反而没那么重要。\n\n路线跑通比较爽。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-004",
+      "scheduled_at": "2026-10-02T22:44:00",
+      "content": "互关区。\n\n健身 / AI / 程序员 / 自媒体，\n四个沾一个就来。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-005",
+      "scheduled_at": "2026-10-02T23:01:00",
+      "content": "做 X 有点像练肩。\n\n刚开始觉得自己练得挺多，\n一照镜子：\n\n就这？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-006",
+      "scheduled_at": "2026-10-02T23:18:00",
+      "content": "晚上十一点还在 X 的，\n都别装正常人了。\n\n报个到。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-007",
+      "scheduled_at": "2026-10-02T23:34:00",
+      "content": "小号别装高冷。\n\n想互关就来，\n我也想把时间线换一批活人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261002-v4-008",
+      "scheduled_at": "2026-10-02T23:51:00",
+      "content": "以前熬夜是打游戏。\n\n现在熬夜是研究训练、AI、账号和搞钱。\n\n听起来高级了，\n本质还是不睡觉。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-001",
+      "scheduled_at": "2026-10-03T00:08:00",
+      "content": "10 月 3 日第一条。\n\n新的一天从“昨天还没睡”开始。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-002",
+      "scheduled_at": "2026-10-03T00:24:00",
+      "content": "互关可以。\n\n但主页一条东西都没有的，\n我是真不知道该跟谁互。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-003",
+      "scheduled_at": "2026-10-03T00:41:00",
+      "content": "几百粉阶段最爽的是：\n\n新来一个人，\n我真能看见是谁来了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-004",
+      "scheduled_at": "2026-10-03T00:58:00",
+      "content": "凌晨一点最危险。\n\n脑子特别容易冒出一个：\n\n“这个项目绝对能成”的新点子。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-005",
+      "scheduled_at": "2026-10-03T01:14:00",
+      "content": "程序员最大的睡前谎言：\n\n这个 bug 修完我就睡。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-006",
+      "scheduled_at": "2026-10-03T01:31:00",
+      "content": "薄肌人半夜真正的敌人不是训练。\n\n是冰箱突然开始有吸引力。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-007",
+      "scheduled_at": "2026-10-03T01:48:00",
+      "content": "夜猫子互关。\n\n粉丝多少无所谓，\n别是僵尸号就行。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-008",
+      "scheduled_at": "2026-10-03T02:04:00",
+      "content": "如果你也在从 0 做号，\n评论留一下现在多少粉。\n\n一个月以后回来考古。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-009",
+      "scheduled_at": "2026-10-03T02:21:00",
+      "content": "我越来越觉得 X 最好玩的不是看大 V。\n\n是一群还没做起来的人，\n看着彼此一点点起量。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-010",
+      "scheduled_at": "2026-10-03T02:38:00",
+      "content": "凌晨两点多还能刷到这条的，\n作息这块咱们谁也别教育谁。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-011",
+      "scheduled_at": "2026-10-03T02:54:00",
+      "content": "身体、技能、现金流、影响力。\n\n非让我删一个我还真不想删。\n\n累点就累点吧。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-012",
+      "scheduled_at": "2026-10-03T03:11:00",
+      "content": "凌晨互关局。\n\n这个点还活着的，\n大概率多少都有点故事。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-013",
+      "scheduled_at": "2026-10-03T03:28:00",
+      "content": "AI 把试错成本降这么低以后，\n最大的浪费可能不是失败。\n\n是不试。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-014",
+      "scheduled_at": "2026-10-03T03:44:00",
+      "content": "做小号让我重新体验了一遍互联网早期的感觉：\n\n每个新关注都还是一个具体的人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-015",
+      "scheduled_at": "2026-10-03T04:01:00",
+      "content": "凌晨三点问题：\n\n如果现在只能把一个属性直接拉满，\n你选身材、钱、能力还是影响力？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-016",
+      "scheduled_at": "2026-10-03T04:18:00",
+      "content": "健身有个好处：\n\n身体从来不听你汇报 PPT。\n\n练没练，\n它直接写脸上。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-017",
+      "scheduled_at": "2026-10-03T04:34:00",
+      "content": "还没睡的来互关。\n\n等白天那批人醒了，\n我们已经偷偷认识一轮了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-018",
+      "scheduled_at": "2026-10-03T04:51:00",
+      "content": "今天带学生健身赚的钱不算多。\n\n但“自己练出来的东西开始有人愿意付钱”\n这感觉很爽。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-019",
+      "scheduled_at": "2026-10-03T05:08:00",
+      "content": "早起的人快醒了。\n\n熬夜的人还没睡。\n\n互联网马上要进行两班倒交接。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-020",
+      "scheduled_at": "2026-10-03T05:24:00",
+      "content": "早起派和熬夜派交接班互关区。\n\n你属于哪一派？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-021",
+      "scheduled_at": "2026-10-03T05:41:00",
+      "content": "天快亮的时候最容易觉得自己什么都能做到。\n\n希望白天的我还能记得一半。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261003-v2-022",
+      "scheduled_at": "2026-10-03T05:58:00",
+      "content": "早安给刚醒的。\n\n晚安给还没睡的。\n\n至于我属于哪边，\n不重要了。",
+      "enabled": true
+    }
+  ]
 }
