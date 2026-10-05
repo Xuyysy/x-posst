@@ -841,6 +841,306 @@
       "scheduled_at": "2026-10-05T05:47:00",
       "content": "六点结算：\n\n别问今天能不能逆天改命。\n先看看自己有没有比昨天多一个筹码。",
       "enabled": true
+    },
+     {
+      "id": "post-20261005-v2-001",
+      "scheduled_at": "2026-10-05T10:00:00",
+      "content": "今天继续扩列。\n\n主页有生活、有观点、有点野心的来。\n\n互关不看粉丝数，看人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-002",
+      "scheduled_at": "2026-10-05T10:17:00",
+      "content": "男人把肩背练出来以后，\n会突然发现很多衣服以前只是挂在身上。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-003",
+      "scheduled_at": "2026-10-05T10:34:00",
+      "content": "AI 最爽的阶段不是它回答得多聪明。\n\n是你开始发现：\n有些事情真的不用自己动手了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-004",
+      "scheduled_at": "2026-10-05T10:51:00",
+      "content": "认真问一句：\n\n如果长相普通，\n但身材、钱、能力全都拉满，\n\n你觉得够不够翻盘？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-005",
+      "scheduled_at": "2026-10-05T11:08:00",
+      "content": "我现在越来越喜欢赚“小钱”。\n\n小钱不会改变人生，\n但会告诉你：\n这个能力真的有人买单。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-006",
+      "scheduled_at": "2026-10-05T11:25:00",
+      "content": "Build your body.\nBuild your skills.\nBuild your leverage.\n\nBeing “potential” forever is boring.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-007",
+      "scheduled_at": "2026-10-05T11:42:00",
+      "content": "研究生最该防的不是挂科。\n\n是读着读着，\n真的把自己活成只会读书的人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-008",
+      "scheduled_at": "2026-10-05T11:59:00",
+      "content": "做 X 最不要脸的阶段，\n也是涨得最快的阶段：\n\n敢发，敢回，敢认识陌生人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-009",
+      "scheduled_at": "2026-10-05T12:16:00",
+      "content": "上午互关局。\n\n最近也在认真做号的来，\n互相看看谁先从小透明爬出去。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-010",
+      "scheduled_at": "2026-10-05T12:33:00",
+      "content": "薄肌有个很爽的瞬间：\n\n别人先看脸，\n第二眼突然开始看肩。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-011",
+      "scheduled_at": "2026-10-05T12:50:00",
+      "content": "程序员最大的消费升级：\n\n以前花钱买硬件。\n现在花钱买一群不会睡觉的数字员工。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-012",
+      "scheduled_at": "2026-10-05T13:07:00",
+      "content": "四选一直接拉满：\n\n脸 / 身材 / 钱 / 脑子。\n\n你要哪个？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-013",
+      "scheduled_at": "2026-10-05T13:24:00",
+      "content": "我现在不太怕别人觉得我爱表现。\n\n练了不展示，\n做了不表达，\n赢了不让人知道，\n\n那我忙什么？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-014",
+      "scheduled_at": "2026-10-05T13:41:00",
+      "content": "Agent 以后最先淘汰的，\n可能不是不会写代码的人。\n\n是任何事都必须亲自做的人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-015",
+      "scheduled_at": "2026-10-05T13:58:00",
+      "content": "互关一轮。\n\n别只点个关注就跑，\n评论区打个招呼，\n我至少知道新邻居是谁。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-016",
+      "scheduled_at": "2026-10-05T14:15:00",
+      "content": "能被别人付钱解决一个问题，\n比收藏十门课让我更有安全感。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-017",
+      "scheduled_at": "2026-10-05T14:32:00",
+      "content": "Your first 1,000 followers probably won’t come from being perfect.\n\nThey’ll come from being impossible to ignore.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-018",
+      "scheduled_at": "2026-10-05T14:49:00",
+      "content": "有腹肌当然不错。\n\n但肩宽、腰窄、体脂低放一起，\n杀伤力才开始上线。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-019",
+      "scheduled_at": "2026-10-05T15:06:00",
+      "content": "做账号有时候很像谈恋爱。\n\n你天天出现，\n人家才可能慢慢记住你。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-020",
+      "scheduled_at": "2026-10-05T15:23:00",
+      "content": "朋友多不一定牛逼。\n\n能在你想做事的时候不往后拽你的，\n才算稀缺资源。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-021",
+      "scheduled_at": "2026-10-05T15:40:00",
+      "content": "午后互关。\n\n健身、AI、代码、自媒体、搞钱。\n\n五个里面沾一个就可以上车。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-022",
+      "scheduled_at": "2026-10-05T15:57:00",
+      "content": "学生时代第一次靠自己技能赚到钱，\n比奖学金爽。\n\n一个是别人评你，\n一个是市场选你。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-023",
+      "scheduled_at": "2026-10-05T16:14:00",
+      "content": "现在写代码最离谱的体验：\n\nBug 还没解决，\nAI 已经顺手建议你重构整个项目了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-024",
+      "scheduled_at": "2026-10-05T16:31:00",
+      "content": "给你一年时间，\n只能证明一件事：\n\n你很能赚钱 / 很能做事 / 身材很好 / 很多人认识你。\n\n选哪个？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-025",
+      "scheduled_at": "2026-10-05T16:48:00",
+      "content": "A good physique gets attention.\nSkills create leverage.\nMoney buys options.\n\nI want all three.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-026",
+      "scheduled_at": "2026-10-05T17:05:00",
+      "content": "薄肌不是“小”。\n\n真正难的是：\n该有的地方有，\n不该有的地方别乱长。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-027",
+      "scheduled_at": "2026-10-05T17:22:00",
+      "content": "小号阶段特别像创业早期。\n\n每一个经常来评论的人，\n你真的会记住。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-028",
+      "scheduled_at": "2026-10-05T17:39:00",
+      "content": "互关区重新开门。\n\n主页一眼看得出来是活人的，\n我基本都会认真逛一下。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-029",
+      "scheduled_at": "2026-10-05T17:56:00",
+      "content": "二十多岁有点贪心挺好。\n\n身体想要，\n钱想要，\n能力想要，\n影响力也想要。\n\n凭什么提前做减法。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-030",
+      "scheduled_at": "2026-10-05T18:13:00",
+      "content": "饮食控制最爽的境界：\n\n不是忍住不吃。\n\n是看到垃圾食品真的觉得一般。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-031",
+      "scheduled_at": "2026-10-05T18:30:00",
+      "content": "AI 会让勤奋贬值一部分，\n但会让执行力升值很多。\n\n因为现在“想到”和“做到”之间越来越短了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-032",
+      "scheduled_at": "2026-10-05T18:47:00",
+      "content": "发帖最失败的不是没人点赞。\n\n是别人划过去以后，\n对你一点印象都没留下。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-033",
+      "scheduled_at": "2026-10-05T19:04:00",
+      "content": "很多人想财务自由。\n\n我现在的目标比较粗暴：\n先做到买一个东西的时候不用看余额脸色。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-034",
+      "scheduled_at": "2026-10-05T19:21:00",
+      "content": "下午互关。\n\n你不用很厉害。\n至少得有点想变厉害的样子。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-035",
+      "scheduled_at": "2026-10-05T19:38:00",
+      "content": "Discipline is attractive because it leaks.\n\nYou can see it in someone’s body, work, money, and words.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-036",
+      "scheduled_at": "2026-10-05T19:55:00",
+      "content": "研究生最荒唐的状态：\n\n学历越来越高，\n现实世界能拿出来交换的东西越来越少。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-037",
+      "scheduled_at": "2026-10-05T20:12:00",
+      "content": "男人身材练好之后有个隐藏 buff：\n\n同一张脸，\n突然像贵了一个版本。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-038",
+      "scheduled_at": "2026-10-05T20:29:00",
+      "content": "评论区做个实验：\n\n你关注我最主要是因为薄肌、AI、做 X、搞钱，\n还是单纯看热闹？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-039",
+      "scheduled_at": "2026-10-05T20:46:00",
+      "content": "做原创最爽的一点：\n\n哪怕数据现在小，\n这些东西也在一点点变成“只有你能发的东西”。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-040",
+      "scheduled_at": "2026-10-05T21:03:00",
+      "content": "晚上互关局。\n\n经常在评论区出现的人我是真会眼熟。\n\n别当一次性网友。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-041",
+      "scheduled_at": "2026-10-05T21:20:00",
+      "content": "很多人嘴上说不在乎外表。\n\n夏天到了以后，\n身体会替所有人重新投票。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-042",
+      "scheduled_at": "2026-10-05T21:37:00",
+      "content": "程序员真正的危机不是 AI 会写代码。\n\n是产品经理发现 AI 也能写以后，\n需求数量翻倍。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-043",
+      "scheduled_at": "2026-10-05T21:54:00",
+      "content": "我现在越来越把自己当项目做。\n\n版本可以烂，\n但不能停止更新。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-044",
+      "scheduled_at": "2026-10-05T22:11:00",
+      "content": "Don’t compete on hours worked.\n\nCompete on how much keeps moving when you’re offline.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-045",
+      "scheduled_at": "2026-10-05T22:28:00",
+      "content": "夜场互关。\n\n这个点还在认真发东西的，\n多少都有点想把自己做起来。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-046",
+      "scheduled_at": "2026-10-05T22:45:00",
+      "content": "以前觉得野心应该藏着。\n\n现在觉得没必要。\n\n想赚钱、想变帅、想出名、想变强，\n都挺正常。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-047",
+      "scheduled_at": "2026-10-05T23:02:00",
+      "content": "真正让我上头的不是“赚到多少钱”。\n\n是发现昨天还不会变现的东西，\n今天突然能收钱了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-048",
+      "scheduled_at": "2026-10-05T23:19:00",
+      "content": "如果明天醒来可以永久 +20% 一个属性：\n\n收入、颜值、肌肉、智商、表达、运气。\n\n你加哪个？",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-049",
+      "scheduled_at": "2026-10-05T23:36:00",
+      "content": "睡前互关最后一波。\n\n今天新来的留句话，\n别让我明天只记得一个头像。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261005-v2-050",
+      "scheduled_at": "2026-10-05T23:53:00",
+      "content": "今天不用证明自己已经牛逼。\n\n只要证明：\n这个账号和这个人，\n还在继续往上走。",
+      "enabled": true
     }
   ]
 }
