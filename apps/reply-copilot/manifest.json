@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Zane Reply Copilot",
+  "version": "1.0.0",
+  "description": "A personal AI copilot for thoughtful, Zane-style X replies.",
+  "minimum_chrome_version": "116",
+  "permissions": ["contextMenus", "storage", "sidePanel", "clipboardWrite"],
+  "host_permissions": ["https://api.deepseek.com/*"],
+  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "side_panel": { "default_path": "sidepanel/sidepanel.html" },
+  "options_page": "options/options.html"
+}

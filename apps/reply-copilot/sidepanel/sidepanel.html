@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zane Reply Copilot</title><link rel="stylesheet" href="sidepanel.css"></head>
+<body>
+  <header><div class="brand-mark">Z</div><div><h1>Zane Reply Copilot</h1><p>Think before you reply.</p></div><button id="settings" class="icon-button" aria-label="Settings" title="Settings">⚙</button></header>
+  <main>
+    <div id="status" class="status" role="status" aria-live="polite">Select some text on X and right-click “Generate Zane Reply”.</div>
+    <button id="open-settings" class="button secondary hidden">Open Settings</button>
+    <section id="result" class="hidden">
+      <section class="original"><h2>Original</h2><p id="source-text"></p></section>
+      <section class="recommendation"><div class="recommendation-head"><h2>Recommendation</h2><span id="recommendation-badge"></span></div><div class="score-line"><strong id="score"></strong><span>Score</span></div><p id="reason"></p></section>
+      <div id="reply-cards" class="cards"></div>
+      <section id="quote-section" class="card hidden"><div class="card-head"><h3>Quote Candidate</h3></div><p id="quote-text" class="reply-text"></p><button class="button copy-button" data-style="quote">Copy Quote</button></section>
+    </section>
+  </main>
+  <footer><button id="regenerate" class="button secondary" disabled>Regenerate</button><button id="footer-settings" class="text-button">Settings</button></footer>
+  <script type="module" src="sidepanel.js"></script>
+</body></html>
