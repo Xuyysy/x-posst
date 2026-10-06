@@ -1561,6 +1561,126 @@
       "scheduled_at": "2026-10-06T23:56:00",
       "content": "今天最后一条：粉丝可以慢慢涨，身体可以慢慢练，钱可以慢慢赚。怕的是所有东西都只停在“想”。",
       "enabled": true
+    },
+     {
+      "id": "post-20261007-v1-001",
+      "scheduled_at": "2026-10-07T00:05:00",
+      "content": "十二点后的互关比较真诚。\n\n白天还在装高冷，\n凌晨都在找活人。\n\n来，互一下。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-002",
+      "scheduled_at": "2026-10-07T00:25:00",
+      "content": "Agent 多了以后，\n\n新工种可能不是写提示词。\n\n是给一群不会睡觉、\n但偶尔会发疯的数字员工擦屁股。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-003",
+      "scheduled_at": "2026-10-07T00:46:00",
+      "content": "薄肌不是把自己练得很大。\n\n是刚好练到——\n衣服开始有压力，\n人开始有吸引力。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-004",
+      "scheduled_at": "2026-10-07T01:06:00",
+      "content": "夜班互关。\n\n关注完别偷偷走，\n评论区报个到。\n\n我想知道今晚是谁陪我一起熬。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-005",
+      "scheduled_at": "2026-10-07T01:27:00",
+      "content": "最近做插件发现一个规律：\n\n我最想做的功能，\n通常都来自一句——\n\n“这破事我不想再手动第二遍。”",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-006",
+      "scheduled_at": "2026-10-07T01:48:00",
+      "content": "大觉理论今晚暂时失效。\n\n看到这条的人，\n明天统一重新做人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-007",
+      "scheduled_at": "2026-10-07T02:09:00",
+      "content": "两点互关抽查。\n\n已经互上的来刷个脸。\n还没互上的现在补票。\n\n别等天亮又装不认识。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-008",
+      "scheduled_at": "2026-10-07T02:30:00",
+      "content": "研究生真正值得做的课外作业：\n\n把自己会的东西，\n拿去现实世界换一次钱。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-009",
+      "scheduled_at": "2026-10-07T02:51:00",
+      "content": "AI can do more of the work now.\n\nWhich makes one thing more valuable:\n\nknowing what is actually worth doing.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-010",
+      "scheduled_at": "2026-10-07T03:12:00",
+      "content": "三点互关。\n\n这个时间还能发出一句完整人话的，\n我默认都是高质量活人。\n\n来认识一下。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-011",
+      "scheduled_at": "2026-10-07T03:33:00",
+      "content": "AI 时代真正不能外包的一步：\n\n最后那个“我确定”。\n\n活可以交出去，\n判断还得自己签字。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-012",
+      "scheduled_at": "2026-10-07T03:54:00",
+      "content": "凌晨照镜子最容易高估自己。\n\n灯光一打，泵感还没退，\n\n感觉薄肌已经完成 A 轮融资。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-013",
+      "scheduled_at": "2026-10-07T04:15:00",
+      "content": "四点互关局。\n\n夜猫子还没撤，\n早起党已经进场。\n\n两拨人在这里握个手。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-014",
+      "scheduled_at": "2026-10-07T04:36:00",
+      "content": "第一次靠一个小东西赚到钱，\n真的很容易上瘾。\n\n因为那一刻你知道：\n\n不是作品完成了。\n是市场验收了。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-015",
+      "scheduled_at": "2026-10-07T04:57:00",
+      "content": "最好的身材不是健身房里看着猛。\n\n是穿衣服有型，\n脱了也不诈骗。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-016",
+      "scheduled_at": "2026-10-07T05:18:00",
+      "content": "五点多互关最公平。\n\n我已经分不清你是早起，\n还是根本没睡。\n\n反正都是自己人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-017",
+      "scheduled_at": "2026-10-07T05:39:00",
+      "content": "做 X 最有意思的不是数字一直涨。\n\n是有一天你突然发现：\n\n评论区开始出现一堆\n你真的眼熟的人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-018",
+      "scheduled_at": "2026-10-07T06:00:00",
+      "content": "Build a body people notice.\n\nBuild skills people pay for.\n\nBuild a name people remember.",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-019",
+      "scheduled_at": "2026-10-07T06:21:00",
+      "content": "六点早班互关。\n\n醒了的来。\n没睡的也来。\n\n互联网不查作息，只查活人。",
+      "enabled": true
+    },
+    {
+      "id": "post-20261007-v1-020",
+      "scheduled_at": "2026-10-07T06:42:00",
+      "content": "新的一天继续叠。\n\n身体一点。\n技能一点。\n钱一点。\n影响力一点。\n\n我不需要今天翻盘。\n我只需要今天别白过。",
+      "enabled": true
     }
   ]
 }
