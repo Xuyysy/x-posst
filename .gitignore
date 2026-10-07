@@ -1,4 +1,6 @@
 .env
+data/posts.json
+data/posts.decrypted.json
 .venv/
 venv/
 __pycache__/

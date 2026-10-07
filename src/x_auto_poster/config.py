@@ -19,5 +19,6 @@ class AppConfig:
         if missing:
             raise ValueError("Missing required environment variables: " + ", ".join(missing))
         base = Path(root) if root else Path(__file__).resolve().parents[2]
+        posts_path = Path(os.environ.get("POSTS_FILE_PATH") or base / "data" / "posts.json")
         return cls(os.environ["BUFFER_API_KEY"], os.environ["BUFFER_CHANNEL_ID"],
-                   base / "data" / "posts.json", base / "data" / "state.json")
+                   posts_path, base / "data" / "state.json")

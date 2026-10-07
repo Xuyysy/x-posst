@@ -37,11 +37,23 @@ jobs:
           python-version: '3.12'
       - name: Install project
         run: pip install -e .
+      - name: Decrypt posts into runner temporary directory
+        env:
+          POSTS_ENCRYPTION_KEY: ${{ secrets.POSTS_ENCRYPTION_KEY }}
+        run: |
+          install -d -m 700 "$RUNNER_TEMP/x-auto-poster"
+          python scripts/decrypt_posts.py \
+            --input data/posts.enc.json \
+            --output "$RUNNER_TEMP/x-auto-poster/posts.json"
+          echo "POSTS_FILE_PATH=$RUNNER_TEMP/x-auto-poster/posts.json" >> "$GITHUB_ENV"
       - name: Run publisher
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_CHANNEL_ID: ${{ secrets.BUFFER_CHANNEL_ID }}
         run: python -m x_auto_poster.main
+      - name: Remove temporary plaintext
+        if: always()
+        run: rm -f "$RUNNER_TEMP/x-auto-poster/posts.json"
       - name: Commit state when changed
         env:
           BRANCH_NAME: ${{ github.ref_name }}

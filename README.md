@@ -1,146 +1,16 @@
-# X Auto Poster V1
+# X Auto Poster
 
-个人定时文字发帖工具。你只需维护仓库中的 `data/posts.json`；外部定时器每 15 分钟调用 GitHub 的 `workflow_dispatch` API，启动 Actions 工作流。Python 找到到期帖子并调用 Buffer GraphQL API 的 `createPost`，请求 Buffer 立即处理到你已连接的 X 账号。Buffer 接受请求后，本地状态记为 `submitted`。这表示 Buffer 已接收任务，不代表 X 已最终发布；最终投递状态请在 Buffer Dashboard 查看。
+Personal scheduled text posting through GitHub Actions and Buffer.
 
-## 第一次配置
+The editable `data/posts.json` stays on your computer and is ignored by Git. `data/posts.enc.json` contains the complete document encrypted with AES-256-GCM. GitHub Actions decrypts it only in the runner's temporary directory. Base64 in the file format is encoding; the protection comes from AES-GCM and the secret key.
 
-### 1. 在 Buffer 连接 X 账号
+## Daily use
 
-创建 Buffer 账号，并在 Buffer Dashboard 连接你准备发帖的 X 账号。V1 每次只使用一个 Buffer Channel。
+1. Edit `data/posts.json` locally, using `data/posts.example.json` as the format reference.
+2. Set `POSTS_ENCRYPTION_KEY` in your shell environment. Keep the same key that is stored in the repository's GitHub Actions Secret.
+3. Run `python scripts/encrypt_posts.py`.
+4. Commit and push **only** `data/posts.enc.json`. Never add `data/posts.json`.
 
-### 2. 创建 Buffer API Key
+The publisher accepts `POSTS_FILE_PATH`; without it, local runs still read `data/posts.json`. The scheduled and externally dispatched workflow use the same publish path. External cron can continue to call `auto-post.yml` with `trigger_source=external-cron` every 15 minutes.
 
-在 Buffer 登录后打开 **Settings → API**，创建并复制 Personal API Key。API Key 只用于你自己的 Buffer 账号。官方说明见 [Buffer Authentication](https://developers.buffer.com/guides/authentication.html)。
-
-### 3. 找到 X Channel ID
-
-本项目包含一次性只读查询脚本。请在本机设置 Buffer API Key 环境变量，然后运行：
-
-```bash
-read -s 'BUFFER_API_KEY?Buffer API Key: '; export BUFFER_API_KEY
-python scripts/list_buffer_channels.py
-unset BUFFER_API_KEY
-```
-
-PowerShell 可用 `$secure = Read-Host "Buffer API Key" -AsSecureString; $env:BUFFER_API_KEY = [Net.NetworkCredential]::new("", $secure).Password` 设置临时环境变量，脚本完成后执行 `Remove-Item Env:BUFFER_API_KEY`。脚本会列出组织、Channel 名称、Service 和 ID。找到对应 X 账号的 Channel（通常 service 显示为 `twitter`），复制 ID。脚本不会输出 API Key，也不会修改 Buffer 数据。正常定时运行不会调用 Channel 查询。
-
-### 4. 把项目放进 GitHub
-
-Fork 本仓库，或在 GitHub 创建仓库并上传项目。不要把 API Key 放进任何文件或 Git 提交。
-
-### 5. 添加 GitHub Secrets
-
-在仓库打开 **Settings → Secrets and variables → Actions → New repository secret**，添加：
-
-- `BUFFER_API_KEY`：上一步创建的 Buffer Personal API Key
-- `BUFFER_CHANNEL_ID`：你复制的 X Channel ID
-
-不要把这些 Secret 写入 `posts.json` 或 `state.json`。项目不需要 X 密码。
-
-### 6. 添加第一条测试帖子
-
-初始的示例帖子在远期且 `enabled: false`，不会意外发布。编辑 `data/posts.json`，在 `posts` 数组中加入一个近期但仍在未来的测试帖子：
-
-```json
-{
-  "id": "test-2026-10-02-001",
-  "scheduled_at": "2026-10-02T18:30:00",
-  "content": "我的 Buffer 测试帖子",
-  "enabled": true
-}
-```
-
-每个 id 必须唯一。时间是 ISO 8601 本地时间且不带时区，由顶层 `timezone` 解释。整份配置在任何发帖前会一次性验证；配置有误时不会发布任何内容。`max_lateness_minutes` 必须是正整数，默认示例为 90 分钟。超出窗口的任务会标记为 `expired`，不会补发。
-
-提交 `posts.json`。
-
-### 7. 手动运行和确认
-
-进入 GitHub **Actions → X Auto Poster → Run workflow**。手动和定时运行使用同一个 Python 入口。查看该次运行日志：如果有到期帖子，应看到 `Buffer accepted post …`。然后在 Buffer Dashboard 检查该 Post；在 Buffer 接收请求后，工作流会自动提交更新后的 `data/state.json`。如果没有到期帖子，日志显示 `No posts due.`，不会发起 Buffer API 请求。
-
-## External Scheduler Setup
-
-使用 [cron-job.org](https://cron-job.org/) 每 15 分钟调用一次 GitHub workflow dispatch API。GitHub 原生 `schedule` 暂时保留为备用触发器；自动运行以外部定时器为准。
-
-1. 在 GitHub **Settings → Developer settings → Personal access tokens → Fine-grained tokens** 创建 Fine-grained PAT。Repository access 选择 **Only select repositories**，仅选 `Xuyysy/x-posst`；Repository permissions 只将 **Actions** 设为 **Read and write**。按需要设置到期日。不要创建 classic PAT，也不要把 token 写入仓库文件或 GitHub Secrets。
-2. 在 cron-job.org 创建 HTTP job，将执行频率设为**每 15 分钟**，请求方法设为 `POST`，URL 填入：
-
-   ```text
-   https://api.github.com/repos/Xuyysy/x-posst/actions/workflows/auto-post.yml/dispatches
-   ```
-
-3. 填写 HTTP headers。仅在 cron-job.org 的 `Authorization` header 中填入 PAT；不要把它放进 URL、Body 或仓库：
-
-   ```text
-   Accept: application/vnd.github+json
-   Authorization: Bearer <FINE_GRAINED_PAT>
-   X-GitHub-Api-Version: 2026-03-10
-   Content-Type: application/json
-   ```
-
-4. Body 选择原始 JSON，填入：
-
-   ```json
-   {
-     "ref": "main",
-     "inputs": {
-       "trigger_source": "external-cron"
-     }
-   }
-   ```
-
-5. 保存并启用 job。可以在 cron-job.org 对这个 job 执行一次 **Test run / Execute now** 测试外部触发；它会运行真实发布流程，请先确认 `data/posts.json` 中的内容适合发布。GitHub API 成功接受请求时返回 HTTP `200`。随后打开 GitHub **Actions → X Auto Poster**，找到这次 `workflow_dispatch` 运行，在 `publish → Show trigger diagnostics` 日志中确认 `event=workflow_dispatch` 与 `trigger_source=external-cron`。如果没有到期帖子，后续发布步骤会输出 `No posts due.` 并正常结束。手动在 GitHub 页面运行时，`trigger_source` 默认为 `manual`。
-
-`BUFFER_API_KEY` 和 `BUFFER_CHANNEL_ID` 继续只保存在 GitHub Actions Secrets 中。外部 PAT 只用于启动工作流，不参与 Python 到 Buffer 的请求。
-
-## 日常使用
-
-以后只需打开 `data/posts.json`，添加新帖子并 Commit。cron-job.org 每 15 分钟启动一次 GitHub Actions；实际请求可能稍有延迟，程序会按帖子计划时间检查。一次发现多条到期帖子时按时间先后依次提交，两次请求间隔 2 秒。
-
-请只编辑 `data/posts.json`，平时不要手动修改 `data/state.json`。状态由程序维护，Actions 在状态变化后提交它。
-
-## 状态与恢复
-
-- `submitted`：Buffer 返回成功结果和 Post ID，表示 Buffer 已接收；V1 不轮询 Buffer 到 X 的最终投递结果。已经 `submitted` 的帖子不会再次创建。
-- `failed`：Buffer 明确拒绝该帖子，例如 GraphQL mutation 业务错误。不会自动重试。
-- `unknown`：网络超时或连接中断，无法确认 Buffer 是否已接收。不会自动重试，请先在 Buffer Dashboard 检查；确认未创建后，用新的唯一 ID 安排帖子。
-- `expired`：超过 `max_lateness_minutes`，不会发布。
-- `rate_limited`：Buffer 明确返回 HTTP 429。状态保存 `retry_after_at`，程序停止本轮后续发布；下一轮在该时间之后且尚未过期时允许重试。
-
-API Key 无效或权限错误会停止当前运行，后续帖子不会被逐个标记为失败。Buffer 限流阈值依账号/API Key 和套餐而定；程序读取 Buffer 响应中的 RateLimit 信息用于日志告警，不在业务层设置每日发帖数量限制。当前限流实现以 [Buffer API Rate Limits 文档](https://developers.buffer.com/guides/api-limits.html) 为准。
-
-## 本地安装和运行
-
-需要 Python 3.12。安装可编辑项目和测试依赖：
-
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -e '.[test]'
-```
-
-在终端设置 `BUFFER_API_KEY` 和 `BUFFER_CHANNEL_ID` 后，可运行一次：
-
-```bash
-python -m x_auto_poster.main
-```
-
-缺少任何一个环境变量时，程序明确报错并退出，不请求 Buffer。
-
-运行测试：
-
-```bash
-pytest
-```
-
-所有测试使用 Fake/Mock HTTP 客户端，不会访问真实 Buffer。
-
-## GitHub Actions 和日志
-
-发布工作流同时支持 `workflow_dispatch` 和原生 `schedule`，两种触发方式执行完全相同的 `publish` job，使用 `ubuntu-latest`、Python 3.12 和 `contents: write`。Concurrency 确保同一时间只运行一个发布任务。状态有变化时，工作流提交 `chore: update auto poster state`，然后 fetch/rebase 最新分支再 push；不使用 force push。没有状态变化时不提交。
-
-如果运行失败，打开 **Actions → X Auto Poster → 对应运行 → publish job** 查看 stdout 日志。CI 工作流在 push 和 pull request 时运行 pytest，不需要 Secrets，也不会调用真实 Buffer API。
-
-## 项目范围
-
-V1 只发布纯文本到单个 Buffer Channel，不包含 X API、图片/视频、Thread、AI、后台界面、数据库、队列或用户系统。业务服务依赖 `SocialClient` 和 `PostRepository` 抽象；当前实现分别为 `BufferClient` 和 `JsonPostRepository`，以后可更换 Provider 或存储实现。
+See [public migration notes](docs/public-migration.md) before changing repository visibility. Existing Git history must be reviewed and cleaned before this repository becomes public.
