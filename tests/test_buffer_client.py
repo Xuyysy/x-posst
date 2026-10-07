@@ -95,3 +95,14 @@ def test_secrets_are_not_in_error_message():
     with pytest.raises(ProviderMutationError) as caught:
         BufferClient("key","channel",Session(response)).publish("hi")
     assert "key" not in str(caught.value)
+
+
+def test_provider_error_does_not_echo_unpublished_content():
+    unpublished = "unpublished post text"
+    for body in (
+        {"errors": [{"message": unpublished}]},
+        {"data": {"createPost": {"__typename": "MutationError", "message": unpublished}}},
+    ):
+        with pytest.raises((ProviderRequestError, ProviderMutationError)) as caught:
+            BufferClient("key", "channel", Session(Response(body=body))).publish(unpublished)
+        assert unpublished not in str(caught.value)

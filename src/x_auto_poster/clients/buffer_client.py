@@ -65,32 +65,21 @@ class BufferClient(SocialClient):
         if body.get("errors"):
             codes = {str(item.get("extensions", {}).get("code", "")).upper()
                      for item in body["errors"] if isinstance(item, dict)} if isinstance(body["errors"], list) else set()
-            messages = self._redact(self._graphql_error_text(body["errors"]))
             if codes & {"UNAUTHORIZED", "FORBIDDEN"}:
                 raise ProviderAuthenticationError("Buffer authentication/authorization failed")
-            raise ProviderRequestError(f"Buffer GraphQL request failed: {messages}")
+            # Provider messages can echo the unpublished post text or credentials.
+            raise ProviderRequestError("Buffer GraphQL request failed")
         data = body.get("data")
         action = data.get("createPost") if isinstance(data, dict) else None
         if not isinstance(action, dict):
             raise ProviderResultUnknownError("Buffer response did not contain data.createPost")
         if action.get("__typename") == "MutationError" or "message" in action and "post" not in action:
-            message = self._redact(str(action.get("message", "Mutation failed")))
-            raise ProviderMutationError(f"Buffer could not accept post: {message}")
+            raise ProviderMutationError("Buffer could not accept post")
         post = action.get("post")
         post_id = post.get("id") if isinstance(post, dict) else None
         if action.get("__typename") != "PostActionSuccess" or not isinstance(post_id, str) or not post_id:
             raise ProviderResultUnknownError("Buffer response did not confirm a created post ID")
         return post_id
-
-    def _redact(self, text: str) -> str:
-        return text.replace(self._api_key, "[redacted]") if self._api_key else text
-
-    @staticmethod
-    def _graphql_error_text(errors: Any) -> str:
-        if not isinstance(errors, list):
-            return "provider returned GraphQL errors"
-        messages = [str(item.get("message", "GraphQL error")) for item in errors if isinstance(item, dict)]
-        return "; ".join(messages)[:300] or "provider returned GraphQL errors"
 
     @staticmethod
     def _parse_retry_after(value: str | None) -> int:
