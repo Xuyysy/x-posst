@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from scripts.posts_crypto import decrypt, encrypt, key_from_environment
+from posts_crypto import decrypt, encrypt, key_from_environment
 
 
 DOCUMENT = b'{"timezone":"Asia/Shanghai","posts":[{"content":"hello"}]}'
