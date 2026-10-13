@@ -50,16 +50,16 @@
     }
   }
   function showFallback(message, anchor) {
-    const fallback = api.inlineAssistant.mount(anchor, handleAction);
+    const fallback = api.inlineAssistant.mount(anchor, handleAction, { compact: true, dismissAfterMs: 12_000 });
     active.assistant = fallback; fallback.setStatus(message);
   }
   async function generateActive(requestId, allowAutoFill = false) {
     const current = active;
-    if (!current || current.requestId !== requestId) return;
+    if (!current || current.requestId !== requestId || current.cancelled) return;
     if (!current.editor?.isConnected || !current.matchedPost) { showFallback("无法准确识别原帖和回复框，未生成或填入内容。", current.post.article); return; }
     try {
       const response = await chrome.runtime.sendMessage({ type: "REPLY_COPILOT_GENERATE", requestId, sourceText: current.post.sourceText, sourceUrl: current.post.sourceUrl });
-      if (!active || active.requestId !== requestId || !active.editor?.isConnected) return;
+      if (!active || active.requestId !== requestId || active.cancelled || !active.editor?.isConnected) return;
       if (!response?.ok) throw new Error(response?.error || "生成失败，请打开侧边栏重试。");
       current.generated = true; current.autoFill = allowAutoFill && response.autoFillEnabled === true; current.result = response.result;
       current.assistant.showResult(response.result.replies, response.result.default_style || "natural", current.autoFill);
@@ -77,6 +77,13 @@
   function handleAction(action, data) {
     if (!active) return;
     const current = active;
+    if (action === "dismiss") {
+      current.cancelled = true;
+      current.observer?.disconnect(); current.abortController?.abort();
+      void chrome.runtime.sendMessage({ type: "REPLY_COPILOT_CANCEL", requestId: current.requestId }).catch(() => {});
+      current.assistant = null;
+      return;
+    }
     if (action === "sidepanel") { void chrome.runtime.sendMessage({ type: "REPLY_COPILOT_OPEN_SIDEPANEL" }); return; }
     if (action === "regenerate") {
       const requestId = crypto.randomUUID();
@@ -104,7 +111,13 @@
     if (!control || control.closest("[data-zane-reply-copilot]")) return;
     const article = control.closest("article");
     const post = api.postExtractor.extractPost(article);
-    if (!post.ok) { active = { requestId: crypto.randomUUID(), post: { article, sourceText: "", sourceUrl: "" }, assistant: null }; showFallback("无法准确识别这条帖子，因此没有发送文本给 AI。请用侧边栏手动选择内容。", article || document.body); return; }
+    if (!post.ok) {
+      if (active?.requestId) void chrome.runtime.sendMessage({ type: "REPLY_COPILOT_CANCEL", requestId: active.requestId }).catch(() => {});
+      active?.observer?.disconnect(); active?.abortController?.abort(); active?.assistant?.close?.();
+      active = { requestId: crypto.randomUUID(), post: { article, sourceText: "", sourceUrl: "" }, assistant: null };
+      showFallback("无法准确识别这条帖子，因此未发送文本给 AI。", article || control.parentElement || control);
+      return;
+    }
     begin(control, post);
   }, true);
 })();
