@@ -7,6 +7,8 @@ const state = document.getElementById("key-state");
 const message = document.getElementById("message");
 const hostAccess = document.getElementById("host-access");
 const testButton = document.getElementById("test");
+const replyStyle = document.getElementById("reply-style");
+const autoFill = document.getElementById("auto-fill");
 let configuredKey = "";
 const DEEPSEEK_ORIGIN = "https://api.deepseek.com/*";
 function showMessage(text, isError = false) { message.textContent = text; message.classList.toggle("error", isError); }
@@ -26,6 +28,12 @@ async function refreshState() {
   configuredKey = await storage.getApiKey();
   state.textContent = configuredKey ? `API key configured (${configuredKey.slice(0, 3)}••••${configuredKey.slice(-4)})` : "No API key configured.";
 }
+async function refreshPreferences() { replyStyle.value = await storage.getReplyStyle(); autoFill.checked = await storage.getAutoFillEnabled(); }
+document.getElementById("save-preferences").addEventListener("click", async () => {
+  await storage.setReplyStyle(replyStyle.value);
+  await storage.setAutoFillEnabled(autoFill.checked);
+  showMessage("Reply preferences saved.");
+});
 document.getElementById("settings-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   const value = input.value.trim();
@@ -43,4 +51,4 @@ testButton.addEventListener("click", async () => {
   catch (error) { showMessage(error.message || "Connection failed.", true); }
   finally { testButton.disabled = false; }
 });
-void Promise.all([refreshState(), refreshHostAccess()]).catch(() => showMessage("Could not read settings.", true));
+void Promise.all([refreshState(), refreshHostAccess(), refreshPreferences()]).catch(() => showMessage("Could not read settings.", true));

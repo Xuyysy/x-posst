@@ -7,7 +7,7 @@ const storage = new StorageService();
 const history = new HistoryService();
 const $ = (id) => document.getElementById(id);
 const cards = $("reply-cards");
-const styles = [["sharp", "Sharp"], ["funny", "Funny"], ["natural", "Natural"]];
+const styles = [["natural", "Natural"], ["light_humor", "Light Humor"], ["thoughtful", "Thoughtful"]];
 let currentRequest = null;
 let currentResult = null;
 let busy = false;
@@ -47,7 +47,8 @@ function renderResult(result) {
   currentResult = result;
   $("source-text").textContent = currentRequest.sourceText;
   $("recommendation-badge").textContent = result.recommendation.toUpperCase();
-  $("score").textContent = String(result.score);
+  $("score").textContent = result.score == null ? "" : String(result.score);
+  $("score").parentElement.classList.toggle("hidden", result.score == null);
   $("reason").textContent = result.reason;
   cards.replaceChildren();
   for (const [style, label] of styles) {
@@ -74,7 +75,7 @@ async function generate(request) {
     if (!apiKey) throw Object.assign(new Error("DeepSeek API key is not configured."), { needsSettings: true });
     if (currentRequest?.requestId !== requestId) return;
     const engine = new ReplyEngine({ aiClient: new DeepSeekClient({ apiKey }), historyService: history });
-    const result = await engine.generate(request);
+    const result = await engine.generate(request, { replyStyle: await storage.getReplyStyle() });
     if (currentRequest?.requestId === requestId) renderResult(result);
   } catch (error) {
     if (currentRequest?.requestId === requestId) showError(error.message || "Something went wrong. Try again.", error.needsSettings || error.message?.includes("API key is not configured"));
