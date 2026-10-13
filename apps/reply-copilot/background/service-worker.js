@@ -11,6 +11,14 @@ const activeRequests = new Map();
 const X_PAGE = /^https:\/\/(?:www\.)?(?:x\.com|twitter\.com)(?:\/|$)/;
 
 chrome.runtime.onInstalled.addListener(() => {
+  void (async () => {
+    const marker = "autoFillPreferenceV2Migrated";
+    const state = await chrome.storage.local.get(marker);
+    if (!state[marker]) {
+      await storage.setAutoFillEnabled(true);
+      await chrome.storage.local.set({ [marker]: true });
+    }
+  })();
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({ id: MENU_ID, title: "Generate Zane Reply", contexts: ["selection"], documentUrlPatterns: ["https://x.com/*", "https://twitter.com/*"] });
   });

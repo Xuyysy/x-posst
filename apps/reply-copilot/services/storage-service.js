@@ -15,6 +15,6 @@ export class StorageService {
   async setHistory(history) { await this.storage.local.set({ [HISTORY_KEY]: history }); }
   async getReplyStyle() { return (await this.storage.local.get(REPLY_STYLE_KEY))[REPLY_STYLE_KEY] || "natural-friendly"; }
   async setReplyStyle(value) { await this.storage.local.set({ [REPLY_STYLE_KEY]: value }); }
-  async getAutoFillEnabled() { return Boolean((await this.storage.local.get(AUTO_FILL_KEY))[AUTO_FILL_KEY]); }
+  async getAutoFillEnabled() { const value = (await this.storage.local.get(AUTO_FILL_KEY))[AUTO_FILL_KEY]; return value === undefined ? true : Boolean(value); }
   async setAutoFillEnabled(value) { await this.storage.local.set({ [AUTO_FILL_KEY]: Boolean(value) }); }
 }
