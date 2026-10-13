@@ -3,10 +3,19 @@
   let active = null;
   const isX = /^https:\/\/(?:www\.)?(?:x\.com|twitter\.com)\//.test(location.href);
   if (!isX) return;
+  const installKey = Symbol.for("zane-reply-copilot.content-script-installed");
+  if (globalThis[installKey]) return;
+  globalThis[installKey] = true;
 
   function record(eventName, data = {}) {
     if (!active) return;
     void chrome.runtime.sendMessage({ type: "REPLY_COPILOT_HISTORY", requestId: active.requestId, sourceText: active.post.sourceText, sourceUrl: active.post.sourceUrl, event: eventName, ...data }).catch(() => {});
+  }
+  function fillCurrent(current, text, requestId) {
+    current.filling = true;
+    try {
+      return api.composerAdapter.fillIfSafe({ editor: current.editor, text, requestId, enabled: current.autoFill, userGesture: true, requestCurrent: active === current && current.requestId === requestId, matchedPost: current.matchedPost, userTyped: current.userTyped });
+    } finally { current.filling = false; }
   }
   function matchedComposer(post) {
     let editor = api.composerAdapter.findComposer(post.article);
@@ -37,7 +46,7 @@
       if (!found.editor || !found.matchedPost) return false;
       clearTimeout(setTimeoutId); active.editor = found.editor; active.matchedPost = found.matchedPost;
       active.assistant = api.inlineAssistant.mount(found.editor.parentElement || found.editor, handleAction);
-      found.editor.addEventListener("input", () => { if (active?.requestId === requestId) { active.userTyped = true; if (active.generated) active.assistant?.showReplaceAction(); } }, { signal: active.abortController.signal });
+      found.editor.addEventListener("input", () => { if (active?.requestId === requestId && !active.filling) { active.userTyped = true; if (active.generated) active.assistant?.showReplaceAction(); } }, { signal: active.abortController.signal });
       active.observer?.disconnect(); active.observer = null;
       void generateActive(requestId, true);
       return true;
@@ -66,7 +75,8 @@
       if (response.result.recommendation === "skip") current.assistant.setStatus(`建议先跳过：${response.result.reason}`);
       if (current.autoFill && response.result.recommendation !== "skip") {
         const text = response.result.replies[response.result.default_style || "natural"];
-        const fillResult = api.composerAdapter.fillIfSafe({ editor: current.editor, text, enabled: true, userGesture: true, requestCurrent: active?.requestId === requestId, matchedPost: current.matchedPost, userTyped: current.userTyped });
+        current.autoFill = true;
+        const fillResult = fillCurrent(current, text, requestId);
         if (fillResult.ok) { current.previousApplied = text.trim(); current.applied = true; current.assistant.setStatus("草稿已填入；检查后由你手动发送。"); record("applied", { style: response.result.default_style || "natural", reply: text }); }
         else current.assistant.setStatus("已生成草稿；没有改动回复框。你可以复制或手动填入。");
       }
@@ -95,7 +105,7 @@
     if (action === "selected" || action === "select") { record("selected", data); return; }
     if (action === "manually_confirmed") { record("manually_confirmed", data); return; }
     if (action === "fill") {
-      const result = api.composerAdapter.fillIfSafe({ editor: current.editor, text: data.reply, enabled: current.autoFill, userGesture: true, requestCurrent: active === current, matchedPost: current.matchedPost, userTyped: current.userTyped });
+      const result = fillCurrent(current, data.reply, current.requestId);
       if (result.ok) { current.previousApplied = data.reply.trim(); current.applied = true; record("applied", data); current.assistant.setStatus("草稿已填入；检查后由你手动发送。"); }
       else current.assistant.setStatus("没有改动回复框。请复制草稿后手动粘贴。");
     }

@@ -15,7 +15,7 @@ A Chrome extension for drafting personal, natural replies to X posts. The inline
 - If the post URL, post text, or matching composer is ambiguous, it does not generate or fill a reply and offers the existing side panel instead.
 - The inline card offers Natural, Light Humor, and Thoughtful variants from the same generation. **Change** cycles cached variants first, then starts a new generation. Selecting a variant never edits the composer.
 - Draft-only mode never changes X's editor. Copy is explicit.
-- Experimental fill is off by default. When enabled, a draft may be inserted only after the user clicked Reply, the exact post and composer still match, and the editor is empty and untouched. If any check fails, the draft remains available to copy. If the user edits the editor, the extension leaves it alone and only offers replacement through a separate explicit button.
+- Automatic filling is enabled by the user's explicit request. A draft may be inserted only after the user clicked Reply, the exact post and composer still match, and the editor is empty and untouched. If any check fails, the draft remains available to copy. If the user edits the editor, the extension leaves it alone and only offers replacement through a separate explicit button.
 - The extension never clicks X's Reply control, presses Post, submits a reply, or decides that a post was published. “I sent this manually” is an optional user-confirmed history event, not a verified publication record.
 
 ## Reply style and history

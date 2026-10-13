@@ -7,12 +7,25 @@
     return candidates.length === 1 ? candidates[0] : null;
   }
   function readText(editor) { return (editor?.innerText ?? editor?.textContent ?? "").replace(/\u00a0/g, " ").trim(); }
+  function normalizeForDuplicateCheck(value) { return value.normalize("NFC").replace(/[\s\u200b-\u200d\ufeff]/g, ""); }
   function isEmpty(editor) { return readText(editor) === ""; }
-  function fillIfSafe({ editor, text, enabled, userGesture, requestCurrent, matchedPost, userTyped }) {
-    if (!enabled || !userGesture || !requestCurrent || !matchedPost || userTyped || !editor?.isConnected || !isEmpty(editor) || !text) return { ok: false, reason: "safety-check-failed" };
+  function collapseExactDoubleInsertion(editor, text) {
+    const expected = normalizeForDuplicateCheck(text.trim());
+    const actual = normalizeForDuplicateCheck(readText(editor));
+    if (!expected || actual !== expected + expected || typeof editor.replaceChildren !== "function" || typeof document.createTextNode !== "function") return false;
+    editor.replaceChildren(document.createTextNode(text.trim()));
+    const InputEventConstructor = globalThis.InputEvent || globalThis.Event;
+    editor.dispatchEvent(new InputEventConstructor("input", { bubbles: true, inputType: "insertText", data: text.trim() }));
+    return normalizeForDuplicateCheck(readText(editor)) === expected;
+  }
+  function fillIfSafe({ editor, text, requestId, enabled, userGesture, requestCurrent, matchedPost, userTyped }) {
+    if (!enabled || !userGesture || !requestCurrent || !matchedPost || userTyped || !editor?.isConnected || !text) return { ok: false, reason: "safety-check-failed" };
+    if ((requestId && editor.dataset?.zaneReplyCopilotFilled === requestId) || readText(editor) === text.trim()) return { ok: true, alreadyPresent: true };
+    if (!isEmpty(editor)) return { ok: false, reason: "safety-check-failed" };
     editor.focus();
     const inserted = document.execCommand?.("insertText", false, text) === true;
-    if (inserted && readText(editor) === text.trim()) return { ok: true };
+    if (inserted && readText(editor) === text.trim()) { if (editor.dataset && requestId) editor.dataset.zaneReplyCopilotFilled = requestId; return { ok: true }; }
+    if (inserted && collapseExactDoubleInsertion(editor, text)) { if (editor.dataset && requestId) editor.dataset.zaneReplyCopilotFilled = requestId; return { ok: true, correctedDisplayDuplicate: true }; }
     return { ok: false, reason: "insertion-not-confirmed" };
   }
   function replaceOnExplicitClick({ editor, text, userGesture, matchedPost }) {
@@ -26,5 +39,5 @@
     return { ok: false, reason: "insertion-not-confirmed" };
   }
   globalThis.ZaneReplyCopilotContent ||= {};
-  globalThis.ZaneReplyCopilotContent.composerAdapter = { findComposer, readText, isEmpty, fillIfSafe, replaceOnExplicitClick };
+  globalThis.ZaneReplyCopilotContent.composerAdapter = { findComposer, readText, isEmpty, fillIfSafe, replaceOnExplicitClick, collapseExactDoubleInsertion };
 })();

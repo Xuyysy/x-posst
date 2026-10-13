@@ -27,12 +27,16 @@ test("post extractor fails closed without exact post text and URL", async () => 
 });
 
 test("composer adapter refuses unsafe or non-empty autofill and verifies a guarded insertion", async () => {
-  const editor = { isConnected: true, innerText: "", focus() {} };
-  const { composerAdapter } = await loadContent("composer-adapter", { document: { execCommand: (_command, _ui, text) => { editor.innerText = text; return true; } } });
+  const editor = { isConnected: true, innerText: "", focus() {}, replaceChildren(node) { this.innerText = node.textContent; }, dispatchEvent() {} };
+  const { composerAdapter } = await loadContent("composer-adapter", { Event, document: { createTextNode: (textContent) => ({ textContent }), execCommand: (_command, _ui, text) => { editor.innerText = `${text}${text}`; return true; } } });
   const base = { editor, text: "draft", enabled: true, userGesture: true, requestCurrent: true, matchedPost: true, userTyped: false };
   assert.equal(composerAdapter.fillIfSafe({ ...base, enabled: false }).ok, false);
   assert.equal(composerAdapter.fillIfSafe({ ...base, userTyped: true }).ok, false);
-  assert.equal(composerAdapter.fillIfSafe(base).ok, true);
+  const firstFill = composerAdapter.fillIfSafe(base);
+  assert.equal(firstFill.ok, true);
+  assert.equal(firstFill.correctedDisplayDuplicate, true);
+  assert.equal(editor.innerText, "draft");
+  assert.equal(composerAdapter.fillIfSafe(base).alreadyPresent, true);
   editor.innerText = "existing";
   assert.equal(composerAdapter.fillIfSafe(base).ok, false);
 });
@@ -48,5 +52,5 @@ test("persona keeps the earlier posts as references while allowing simple natura
   const { ZANE_PERSONA } = await import("../prompts/persona.js");
   assert.equal(ZANE_PERSONA.postStyleExamples.length >= 3, true);
   assert.match(ZANE_PERSONA.postStyleGuidance, /references only/i);
-  assert.match(ZANE_PERSONA.humor, /sincere reaction/i);
+  assert.match(ZANE_PERSONA.humor, /empathy comes first/i);
 });

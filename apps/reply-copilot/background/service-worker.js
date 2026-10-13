@@ -12,7 +12,7 @@ const X_PAGE = /^https:\/\/(?:www\.)?(?:x\.com|twitter\.com)(?:\/|$)/;
 
 chrome.runtime.onInstalled.addListener(() => {
   void (async () => {
-    const marker = "autoFillPreferenceV2Migrated";
+    const marker = "autoFillExplicitlyEnabled20261013";
     const state = await chrome.storage.local.get(marker);
     if (!state[marker]) {
       await storage.setAutoFillEnabled(true);
