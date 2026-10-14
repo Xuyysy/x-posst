@@ -1,9 +1,0 @@
-{
-  "name": "reply-copilot",
-  "version": "0.1.0-beta",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "test": "node --test"
-  }
-}
