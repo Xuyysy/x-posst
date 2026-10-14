@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zane Reply Copilot</title><link rel="stylesheet" href="sidepanel.css"></head>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reply Copilot</title><link rel="stylesheet" href="sidepanel.css"></head>
 <body>
-  <header><div class="brand-mark">Z</div><div><h1>Zane Reply Copilot</h1><p>Think before you reply.</p></div><button id="settings" class="icon-button" aria-label="Settings" title="Settings">⚙</button></header>
+  <header><div class="brand-mark">✦</div><div><h1>Reply Copilot</h1><p>用你的语气，自然地回复。</p></div><button id="settings" class="icon-button" aria-label="设置" title="设置">⚙</button></header>
   <main>
-    <div id="status" class="status" role="status" aria-live="polite">Select some text on X and right-click “Generate Zane Reply”.</div>
-    <button id="open-settings" class="button secondary hidden">Open Settings</button>
+    <div id="status" class="status" role="status" aria-live="polite">在 X 页面打开回复框，或选中文字后右键选择“生成回复”。</div>
+    <button id="open-settings" class="button secondary hidden">打开设置</button>
     <section id="result" class="hidden">
-      <section class="original"><h2>Original</h2><p id="source-text"></p></section>
-      <section class="recommendation"><div class="recommendation-head"><h2>Recommendation</h2><span id="recommendation-badge"></span></div><div class="score-line"><strong id="score"></strong><span>Score</span></div><p id="reason"></p></section>
+      <section class="original"><h2>原帖内容</h2><p id="source-text"></p></section>
+      <section class="recommendation"><div class="recommendation-head"><h2>回复建议</h2><span id="recommendation-badge"></span></div><div class="score-line"><strong id="score"></strong><span>参考分</span></div><p id="reason"></p></section>
       <div id="reply-cards" class="cards"></div>
-      <section id="quote-section" class="card hidden"><div class="card-head"><h3>Quote Candidate</h3></div><p id="quote-text" class="reply-text"></p><button class="button copy-button" data-style="quote">Copy Quote</button></section>
+      <p class="feedback-label">这条建议有帮助吗？</p><div class="feedback"><button id="feedback-good" class="button secondary">有帮助</button><button id="feedback-bad" class="button secondary">不太像我</button></div>
+      <section id="quote-section" class="card hidden"><div class="card-head"><h3>引用建议</h3></div><p id="quote-text" class="reply-text"></p><button class="button copy-button" data-style="quote">复制引用</button></section>
     </section>
   </main>
-  <footer><button id="regenerate" class="button secondary" disabled>Regenerate</button><button id="footer-settings" class="text-button">Settings</button></footer>
+  <footer><button id="regenerate" class="button secondary" disabled>重新生成</button><button id="footer-settings" class="text-button">设置</button></footer>
   <script type="module" src="sidepanel.js"></script>
 </body></html>

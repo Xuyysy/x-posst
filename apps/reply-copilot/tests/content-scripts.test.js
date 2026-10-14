@@ -26,19 +26,28 @@ test("post extractor fails closed without exact post text and URL", async () => 
   assert.equal(postExtractor.extractPost(article).ok, false);
 });
 
-test("composer adapter refuses unsafe or non-empty autofill and verifies a guarded insertion", async () => {
-  const editor = { isConnected: true, innerText: "", focus() {}, replaceChildren(node) { this.innerText = node.textContent; }, dispatchEvent() {} };
-  const { composerAdapter } = await loadContent("composer-adapter", { Event, document: { createTextNode: (textContent) => ({ textContent }), execCommand: (_command, _ui, text) => { editor.innerText = `${text}${text}`; return true; } } });
-  const base = { editor, text: "draft", enabled: true, userGesture: true, requestCurrent: true, matchedPost: true, userTyped: false };
-  assert.equal(composerAdapter.fillIfSafe({ ...base, enabled: false }).ok, false);
-  assert.equal(composerAdapter.fillIfSafe({ ...base, userTyped: true }).ok, false);
-  const firstFill = composerAdapter.fillIfSafe(base);
-  assert.equal(firstFill.ok, true);
-  assert.equal(firstFill.correctedDisplayDuplicate, true);
-  assert.equal(editor.innerText, "draft");
-  assert.equal(composerAdapter.fillIfSafe(base).alreadyPresent, true);
-  editor.innerText = "existing";
-  assert.equal(composerAdapter.fillIfSafe(base).ok, false);
+test("composer adapter locates the X editor and exposes no DOM writer", async () => {
+  const editor = { isConnected: true, innerText: "existing user draft", closest: () => null };
+  const { composerAdapter } = await loadContent("composer-adapter", { document: { querySelector: () => null } });
+  const article = { querySelectorAll: () => [editor] };
+  assert.equal(composerAdapter.findComposer(article), editor);
+  assert.equal(composerAdapter.readText(editor), "existing user draft");
+  for (const method of ["fillIfSafe", "replaceOnExplicitClick", "replaceExactDoubleInsertion"]) assert.equal(composerAdapter[method], undefined);
+  const source = await readFile(new URL("../content/composer-adapter.js", import.meta.url), "utf8");
+  assert.doesNotMatch(source, /execCommand|dispatchEvent|replaceChildren|insertNode|innerHTML\s*=|innerText\s*=|textContent\s*=/);
+});
+
+test("composer adapter focuses an empty editor and places the caret without inserting text", async () => {
+  const editor = { isConnected: true, innerText: "", contains: (node) => node === editor };
+  const selection = { anchorNode: null, removeAllRanges() {}, addRange() { this.anchorNode = editor; } };
+  const document = { activeElement: null, createRange: () => ({ selectNodeContents() {}, collapse() {} }) };
+  editor.focus = () => { document.activeElement = editor; };
+  const { composerAdapter } = await loadContent("composer-adapter", { document, window: { getSelection: () => selection } });
+  assert.equal(composerAdapter.focusEmpty(editor), true);
+  assert.equal(editor.innerText, "");
+  editor.innerText = "user draft";
+  assert.equal(composerAdapter.focusEmpty(editor), false);
+  assert.equal(editor.innerText, "user draft");
 });
 
 test("inline assistant cycles its cached candidates without regenerating", async () => {
@@ -46,6 +55,22 @@ test("inline assistant cycles its cached candidates without regenerating", async
   assert.equal(inlineAssistant.nextCandidateIndex(0, 3), 1);
   assert.equal(inlineAssistant.nextCandidateIndex(2, 3), 0);
   assert.equal(inlineAssistant.nextCandidateIndex(0, 0), 0);
+});
+
+test("inline assistant exposes copy and no composer mutation actions", async () => {
+  const source = await readFile(new URL("../content/inline-assistant.js", import.meta.url), "utf8");
+  const content = await readFile(new URL("../content/content-script.js", import.meta.url), "utf8");
+  assert.match(source, /data-action="copy"/);
+  assert.doesNotMatch(source, /data-action="(?:fill|replace)"/);
+  assert.doesNotMatch(content, /composerAdapter\.(?:fillIfSafe|replaceOnExplicitClick|insertOnce)|action === "(?:fill|replace)"/);
+});
+
+test("controlled editor fixture models input state and a later rerender", async () => {
+  const fixture = await readFile(new URL("./fixtures/controlled-composer.html", import.meta.url), "utf8");
+  assert.match(fixture, /contenteditable="true"/);
+  assert.match(fixture, /editor\.addEventListener\("input"/);
+  assert.match(fixture, /模拟框架重渲染/);
+  assert.match(fixture, /model = editor\.innerText/);
 });
 
 test("persona keeps the earlier posts as references while allowing simple natural replies", async () => {

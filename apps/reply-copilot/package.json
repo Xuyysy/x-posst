@@ -1,7 +1,9 @@
 {
-  "name": "zane-reply-copilot",
-  "version": "1.0.0",
+  "name": "reply-copilot",
+  "version": "0.1.0-beta",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test" }
+  "scripts": {
+    "test": "node --test"
+  }
 }

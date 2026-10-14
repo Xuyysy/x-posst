@@ -1,3 +1,4 @@
 export class AIClient {
-  async generateReplyAnalysis(_input) { throw new Error("Not implemented"); }
+  async generateReplies(_input) { throw new Error("Not implemented"); }
+  async generateReplyAnalysis(input) { return this.generateReplies(input); }
 }

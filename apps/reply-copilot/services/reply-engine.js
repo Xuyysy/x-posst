@@ -1,15 +1,19 @@
 import { validateSourceText } from "../utils/validation.js";
 import { buildPrompts } from "../prompts/prompt-builder.js";
-import { ZANE_PERSONA } from "../prompts/persona.js";
+import { DEFAULT_VOICE_PROFILE } from "../domain/voice-profile.js";
 import { parseAIOutput } from "../utils/output-parser.js";
 
 export class ReplyEngine {
-  constructor({ aiClient, historyService, persona = ZANE_PERSONA }) { this.aiClient = aiClient; this.historyService = historyService; this.persona = persona; }
-  async generate(request, { replyStyle = "natural-friendly", signal } = {}) {
-    const validRequest = { ...request, sourceText: validateSourceText(request?.sourceText) };
-    const recentHistory = await this.historyService.getRecent(20);
-    const styleStats = await this.historyService.getStats();
-    const prompts = buildPrompts({ request: validRequest, persona: this.persona, recentHistory, styleStats, replyStyle });
-    return parseAIOutput(await this.aiClient.generateReplyAnalysis({ ...prompts, signal }));
+  constructor({ aiClient, historyService, voiceProfile = null, persona = null, usageService = null }) { this.aiClient = aiClient; this.historyService = historyService; this.voiceProfile = voiceProfile; this.persona = persona; this.usageService = usageService; }
+  async generateReplies({ postContext, voiceProfile = this.voiceProfile, recentHistory, requestId = "" }, { replyStyle = "natural-friendly", signal, styleStats } = {}) {
+    const sourceText = validateSourceText(postContext?.text || postContext?.sourceText);
+    const request = { sourceText, sourceUrl: postContext?.url || postContext?.sourceUrl || "", requestId };
+    const selectedHistory = recentHistory || await this.historyService.getRecent(20);
+    const selectedStats = styleStats || await this.historyService.getStats();
+    const prompts = buildPrompts({ postContext: { text: sourceText, url: request.sourceUrl }, voiceProfile: voiceProfile || (this.persona ? undefined : DEFAULT_VOICE_PROFILE), persona: this.persona, recentHistory: selectedHistory, styleStats: selectedStats, replyStyle });
+    const generate = this.aiClient.generateReplies || this.aiClient.generateReplyAnalysis;
+    const raw = await generate.call(this.aiClient, { ...prompts, signal, requestId });
+    return parseAIOutput(raw);
   }
+  async generate(request, options = {}) { return this.generateReplies({ postContext: request, requestId: request?.requestId || "" }, options); }
 }

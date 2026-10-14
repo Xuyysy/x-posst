@@ -7,7 +7,7 @@ const TIMEOUT_MS = 30_000;
 
 export class DeepSeekClient extends AIClient {
   constructor({ apiKey, fetchImpl = fetch, timeoutMs = TIMEOUT_MS } = {}) { super(); this.apiKey = apiKey; this.fetchImpl = fetchImpl; this.timeoutMs = timeoutMs; }
-  async generateReplyAnalysis({ system, user, signal }) {
+  async generateReplies({ system, user, signal }) {
     if (!this.apiKey) throw new DeepSeekAPIError("DeepSeek API key is not configured.");
     if (globalThis.chrome?.permissions?.contains) {
       const hostAccess = await chrome.permissions.contains({ origins: ["https://api.deepseek.com/*"] });
@@ -23,7 +23,7 @@ export class DeepSeekClient extends AIClient {
       response = await Reflect.apply(this.fetchImpl, globalThis, [API_URL, { method: "POST", headers: { Authorization: `Bearer ${this.apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: DEFAULT_MODEL, messages: [{ role: "system", content: system }, { role: "user", content: user }], response_format: { type: "json_object" }, max_tokens: 1200, thinking: { type: "disabled" } }), signal: controller.signal }]);
     } catch (error) {
       if (error?.name === "AbortError") throw new DeepSeekTimeoutError();
-      console.warn("DeepSeek transport error", { name: error?.name || "Error", message: error?.message || "Unknown fetch failure", endpoint: API_URL });
+      console.warn("DeepSeek transport request failed.");
       throw new DeepSeekAPIError("Could not reach api.deepseek.com. Check your internet connection, VPN or proxy, and this extension’s access to the DeepSeek host, then try again.");
     } finally { clearTimeout(timer); signal?.removeEventListener("abort", relayAbort); }
     if (!response.ok) {
@@ -37,6 +37,7 @@ export class DeepSeekClient extends AIClient {
     if (typeof content !== "string" || !content.trim()) throw new InvalidAIResponseError("DeepSeek returned an empty response.");
     return content;
   }
+  async generateReplyAnalysis(input) { return this.generateReplies(input); }
 }
 
 export async function testDeepSeekConnection(apiKey, { fetchImpl = fetch, timeoutMs = TIMEOUT_MS } = {}) {
