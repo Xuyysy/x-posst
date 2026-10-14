@@ -5750,6 +5750,11 @@
       "provider": "buffer",
       "provider_post_id": "6acf90d171d72ce5c0ba31a8",
       "submitted_at": "2026-10-14T22:25:22.462831+08:00"
+    },
+    "post-20261014-v2-047": {
+      "status": "failed",
+      "error": "Buffer could not accept post",
+      "failed_at": "2026-10-14T23:05:17.913746+08:00"
     }
   }
 }
