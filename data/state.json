@@ -8476,6 +8476,12 @@
       "provider": "buffer",
       "provider_post_id": "6add6ae4bd33ce99c3507e24",
       "submitted_at": "2026-10-25T10:35:17.534038+08:00"
+    },
+    "post-20261025-b1-002": {
+      "status": "submitted",
+      "provider": "buffer",
+      "provider_post_id": "6add6e6a3d5b27036bb2624c",
+      "submitted_at": "2026-10-25T10:50:19.981609+08:00"
     }
   }
 }
