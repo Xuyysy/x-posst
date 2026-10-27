@@ -9300,10 +9300,13 @@
       "submitted_at": "2026-10-27T21:30:41.114595+08:00"
     },
     "post-20261027-b1-039": {
+      "status": "expired"
+    },
+    "post-20261027-b1-040": {
       "status": "rate_limited",
       "error": "Buffer rate limit exceeded",
-      "retry_after_at": "2026-10-31T11:39:44.537808+08:00",
-      "occurred_at": "2026-10-27T21:40:22.308271+08:00"
+      "retry_after_at": "2026-10-31T11:39:44.399778+08:00",
+      "occurred_at": "2026-10-27T21:50:23.148945+08:00"
     }
   }
 }
