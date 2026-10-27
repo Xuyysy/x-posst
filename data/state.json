@@ -9303,10 +9303,13 @@
       "status": "expired"
     },
     "post-20261027-b1-040": {
+      "status": "expired"
+    },
+    "post-20261027-b1-041": {
       "status": "rate_limited",
       "error": "Buffer rate limit exceeded",
-      "retry_after_at": "2026-10-31T11:39:44.399778+08:00",
-      "occurred_at": "2026-10-27T21:50:23.148945+08:00"
+      "retry_after_at": "2026-10-31T11:39:43.711103+08:00",
+      "occurred_at": "2026-10-27T22:00:42.345904+08:00"
     }
   }
 }
