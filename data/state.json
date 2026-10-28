@@ -9400,6 +9400,12 @@
     },
     "post-20261028-b1-022": {
       "status": "expired"
+    },
+    "post-20261028-b1-023": {
+      "status": "rate_limited",
+      "error": "Buffer rate limit exceeded",
+      "retry_after_at": "2026-10-31T11:39:44.565948+08:00",
+      "occurred_at": "2026-10-28T15:50:21.358937+08:00"
     }
   }
 }
