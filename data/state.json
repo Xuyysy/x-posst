@@ -9429,10 +9429,7 @@
       "status": "expired"
     },
     "post-20261028-b1-032": {
-      "status": "rate_limited",
-      "error": "Buffer rate limit exceeded",
-      "retry_after_at": "2026-10-31T11:39:44.413067+08:00",
-      "occurred_at": "2026-10-28T18:30:33.155480+08:00"
+      "status": "expired"
     }
   }
 }
